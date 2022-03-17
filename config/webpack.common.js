@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { DefinePlugin } = require('webpack');
 
 module.exports = {
   entry: './src/main.ts',
@@ -47,7 +48,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
+    new DefinePlugin({
+      __VUE_OPTIONS_API__: JSON.stringify(false),
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(true),
+    }),
     new VueLoaderPlugin(),
   ],
 
 };
+
