@@ -2,6 +2,8 @@ const { merge } = require('webpack-merge');
 const { HotModuleReplacementPlugin } = require('webpack');
 
 const commonConfig = require('./webpack.common');
+const path = require('path');
+console.log(path.resolve('./src/styles/_variables.scss'));
 
 const devConfig = {
   mode: 'development',
@@ -13,11 +15,23 @@ const devConfig = {
   },
   module: {
     rules: [
-
+      {
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: ['./src/styles/_variables.scss'],
+            },
+          },
+        ],
+      },
     ],
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new HotModuleReplacementPlugin(),

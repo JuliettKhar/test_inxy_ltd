@@ -10,7 +10,7 @@ const prodConfig = {
   output: {
     path: path.resolve(
       __dirname,
-      './dist',
+      '../dist',
     ),
     publicPath: '/dist/',
   },

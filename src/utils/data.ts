@@ -1,0 +1,58 @@
+export const data = [
+  {
+    title: 'News Title Lorem Ipsum Dolor Sit Amet ddd',
+    date: '03.10.2021',
+    from: 'CNN Indonesia',
+    description: 'Nisi, sagittis aliquet sit rutrum. Nunc, id vestibulum quam ornare adipiscing. Pellentesque sed turpis nunc gravida pharetra, sit nec vivamus pharetra. . Massa tortor nibh nulla condimentum imperdiet scelerisque. Velit, dui, egestas nisi, elementum mattis mauris magnis. Massa tortor nibh nulla condimentum imperdiet scelerisque',
+    image: '/src/assets/img/Rectangle 3.jpg',
+  },
+  {
+    title: 'News Title Lorem Ipsum Dolor Sit Amet',
+    date: '04.10.2021',
+    from: 'CNN Indonesia',
+    description: 'Velit, dui, egestas nisi, elementum mattis mauris, magnis. Massa tortor nibh nulla condimentum imperdiet scelerisque...Nisi, sagittis aliquet sit rutrum. Nunc, id vestibulum quam ornare adipiscing. Pellentesque sed turpis nunc gravida pharetra, sit nec vivamus pharetra.',
+    image: '/src/assets/img/Rectangle 4.jpg',
+  },
+  {
+    title: 'News Title Lorem Ipsum Dolor Sit Amet',
+    date: '03.12.2020',
+    from: 'CNN Indonesia',
+    description: 'Velit, dui, egestas nisi, elementum mattis mauris, magnis. Massa tortor nibh nulla condimentum imperdiet scelerisque...Nisi, sagittis aliquet sit rutrum. Nunc, id vestibulum quam ornare adipiscing. Pellentesque sed turpis nunc gravida pharetra, sit nec vivamus pharetra.',
+    image: '/src/assets/img/Rectangle 5.jpg',
+  },
+  {
+    title: 'News Title Lorem Ipsum Dolor Sit Amet',
+    date: '03.09.2021',
+    from: 'CNN Indonesia',
+    description: 'Velit, dui, egestas nisi, elementum mattis mauris, magnis. Massa tortor nibh nulla condimentum imperdiet scelerisque...Nisi, sagittis aliquet sit rutrum. Nunc, id vestibulum quam ornare adipiscing. Pellentesque sed turpis nunc gravida pharetra, sit nec vivamus pharetra.',
+    image: '/src/assets/img/Rectangle 6.jpg',
+  },
+  {
+    title: 'News Title Lorem Ipsum Dolor Sit Amet',
+    date: '05.12.2020',
+    from: 'CNN Indonesia',
+    description: 'Nisi, sagittis aliquet sit rutrum. Nunc, id vestibulum quam ornare adipiscing. Pellentesque sed turpis nunc gravida pharetra, sit nec vivamus pharetra. . Massa tortor nibh nulla condimentum imperdiet scelerisque. Velit, dui, egestas nisi, elementum mattis mauris magnis. Massa tortor nibh nulla condimentum imperdiet scelerisque',
+    image: '/src/assets/img/Rectangle 7.jpg',
+  },
+  {
+    title: 'News Title Lorem Ipsum Dolor Sit Amet',
+    date: '06.11.2021',
+    from: 'CNN Indonesia',
+    description: 'Velit, dui, egestas nisi, elementum mattis mauris, magnis. Massa tortor nibh nulla condimentum imperdiet scelerisque...Nisi, sagittis aliquet sit rutrum. Nunc, id vestibulum quam ornare adipiscing. Pellentesque sed turpis nunc gravida pharetra, sit nec vivamus pharetra.',
+    image: '/src/assets/img/Rectangle 8.jpg',
+  },
+  {
+    title: 'News Title Lorem Ipsum Dolor Sit Amet',
+    date: '07.11.2021',
+    from: 'CNN Indonesia',
+    description: 'Velit, dui, egestas nisi, elementum mattis mauris, magnis. Massa tortor nibh nulla condimentum imperdiet scelerisque...Nisi, sagittis aliquet sit rutrum. Nunc, id vestibulum quam ornare adipiscing. Pellentesque sed turpis nunc gravida pharetra, sit nec vivamus pharetra.',
+    image: '/src/assets/img/Rectangle 9.jpg',
+  },
+  {
+    title: 'News Title Lorem Ipsum Dolor Sit Amet',
+    date: '10.12.2020',
+    from: 'CNN Indonesia',
+    description: 'Velit, dui, egestas nisi, elementum mattis mauris, magnis. Massa tortor nibh nulla condimentum imperdiet scelerisque...Nisi, sagittis aliquet sit rutrum. Nunc, id vestibulum quam ornare adipiscing. Pellentesque sed turpis nunc gravida pharetra, sit nec vivamus pharetra.',
+    image: '/src/assets/img/Rectangle 10.jpg',
+  },
+];

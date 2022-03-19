@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { DefinePlugin } = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: './src/main.ts',
@@ -31,13 +32,17 @@ module.exports = {
           'css-loader',
           {
             loader: 'sass-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
             options: {
-              /*
-               * Вы можете также указать файл, например `variables.scss`
-               * Используйте свойство `prependData` здесь, если версия sass-loader = 8
-               * Используйте свойство `data` здесь, если версия sass-loader < 8
-               */
-              additionalData: '$color: red;',
+              name: '[name].[ext]',
+              outputPath: 'assets/fonts',
             },
           },
         ],
@@ -54,6 +59,14 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
   ],
-
+  resolve: {
+    alias: {
+      '@': path.resolve(
+        __dirname,
+        '../src',
+      ),
+    },
+    extensions: ['.tsx', '.ts', '.js'],
+  },
 };
 

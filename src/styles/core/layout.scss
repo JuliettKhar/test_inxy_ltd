@@ -16,11 +16,17 @@ body {
   display: flex;
   flex-direction: column;
   height: inherit;
+  font-family: 'PlayfairDisplay', serif;
 
   main {
     display: flex;
     flex: 1;
-    max-width: 1180px;
+    max-width: 82%;
+    width:82%;
     margin: 0 auto;
+
+    @media (min-width: 1920px) {
+      max-width: 1440px;
+    }
   }
 }
