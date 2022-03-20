@@ -4,13 +4,13 @@
       <h2 class="news__header-title">Latest News</h2>
       <div class="news__header-filter-wrapper">
         <span class="news__header-date">Friday, <span class="mobile-hidden">December</span> 12, 2022</span>
-        <button class="news__header-filter" @click="sortData(asc = !asc)">
+        <button class="news__header-filter" @click="$emit('sort', asc = !asc)">
           <img :class="!asc ? 'rotated' : ''" src="/src/assets/img/sort.svg" alt="news filter">
         </button>
       </div>
     </div>
     <div class="news__content-wrapper">
-      <div v-for="(item, i) in filteredData" :key="i" class="news__content-item">
+      <div v-for="(item, i) in newsData" :key="i" class="news__content-item">
         <img class="content-item__image" :src="item.image" alt="image">
         <h4 class="content-item__title">{{ item.title }}</h4>
         <div class="content-item__date">
@@ -26,30 +26,19 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, inject, onMounted, ref} from "vue";
+import { defineComponent, inject, ref} from "vue";
 import { DataType } from "../types";
 
 export default defineComponent({
   name: "News",
   setup() {
-    const newsData = inject('newsData', ref([]));
-
-    const filteredData = computed<DataType[]>(() => newsData.value);
+    const newsData = inject('newsData', ref<DataType[]>([]));
     const asc = ref(true);
 
-    const sortData = (asc) => {
-      asc ? newsData.value.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()) :
-          newsData.value.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    }
-
-
-    onMounted(() => sortData(asc.value))
 
     return {
       newsData,
-      filteredData,
       asc,
-      sortData
     }
   }
 })

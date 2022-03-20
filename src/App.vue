@@ -2,18 +2,18 @@
   <div class="app">
     <Header @search="searchNews" @clear="clearResults"/>
     <main>
-      <news/>
+      <news @sort="sortDataByDate"/>
     </main>
     <Footer/>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, provide} from "vue";
+import {defineComponent, onMounted, provide} from "vue";
 import News from './pages/News.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
-import useApp from "@/composables/useApp";
+import useApp from "./composables/useApp";
 
 export default defineComponent({
   name: "App",
@@ -23,13 +23,22 @@ export default defineComponent({
     Footer
   },
   setup() {
-    const { newsData, searchNews, clearResults } = useApp();
+    const {
+      newsData,
+      searchNews,
+      clearResults,
+      getData ,
+      sortDataByDate
+    } = useApp();
 
     provide('newsData', newsData);
 
+    onMounted(() => getData());
+
     return {
       searchNews,
-      clearResults
+      clearResults,
+      sortDataByDate
     }
   }
 })

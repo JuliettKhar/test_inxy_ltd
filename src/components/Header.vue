@@ -7,7 +7,6 @@
             :key="i"
             :class="['nav-wrapper__news', isActiveBtn === i ? 'is-active' : '']"
             href="#"
-            @click="isActiveBtn = i"
         >
           {{ btn }}
         </a>

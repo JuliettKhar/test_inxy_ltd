@@ -2,7 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { DefinePlugin } = require('webpack');
-const path = require('path');
 
 module.exports = {
   entry: './src/main.ts',
@@ -60,12 +59,6 @@ module.exports = {
     new VueLoaderPlugin(),
   ],
   resolve: {
-    alias: {
-      '@': path.resolve(
-        __dirname,
-        '../src',
-      ),
-    },
     extensions: ['.tsx', '.ts', '.js'],
   },
 };
