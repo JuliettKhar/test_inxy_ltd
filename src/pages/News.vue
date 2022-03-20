@@ -37,12 +37,13 @@ export default defineComponent({
     const filteredData = computed<DataType[]>(() => newsData.value);
     const asc = ref(true);
 
-    const sortData = (asc) =>
-      asc ?  newsData.value.sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime()) :
-       newsData.value.sort((a,b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    const sortData = (asc) => {
+      asc ? newsData.value.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()) :
+          newsData.value.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    }
 
 
-    onMounted(() => sortData(asc))
+    onMounted(() => sortData(asc.value))
 
     return {
       newsData,

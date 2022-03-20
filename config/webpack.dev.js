@@ -2,8 +2,6 @@ const { merge } = require('webpack-merge');
 const { HotModuleReplacementPlugin } = require('webpack');
 
 const commonConfig = require('./webpack.common');
-const path = require('path');
-console.log(path.resolve('./src/styles/_variables.scss'));
 
 const devConfig = {
   mode: 'development',
