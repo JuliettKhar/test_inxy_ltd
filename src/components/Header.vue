@@ -12,11 +12,15 @@
         </a>
       </div>
       <div
-          @mouseenter="onSearchHover = true"
-          @mouseleave="resetSearch"
+          @mouseenter="showSearchInput"
           class="header__search-wrapper"
       >
-        <input type="text" :class="onSearchHover ? 'is-visible' : ''" v-model="searchValue">
+        <input
+            type="text"
+            :class="onSearchHover ? 'is-visible' : ''"
+            v-model="searchValue"
+            @keyup.enter="searchNews"
+        >
         <button class="header__search-btn" @click="searchNews">
           <img class="header__search" src="/src/assets/img/search.svg" alt="search">
         </button>
@@ -30,6 +34,7 @@ import {defineComponent, ref} from "vue";
 
 export default defineComponent({
   name: "Header",
+  emits: ['search'],
   setup(_, {emit}) {
     const buttons = ['News', 'Portal'];
     const isActiveBtn = ref(0);
@@ -37,11 +42,7 @@ export default defineComponent({
     const searchValue = ref('');
 
     const searchNews = () => emit('search', searchValue.value);
-    const resetSearch = () => {
-      onSearchHover.value = false;
-      emit('clear')
-
-    }
+    const showSearchInput = () => onSearchHover.value = true;
 
     return {
       buttons,
@@ -49,7 +50,7 @@ export default defineComponent({
       onSearchHover,
       searchValue,
       searchNews,
-      resetSearch
+      showSearchInput
     }
   }
 })

@@ -7,7 +7,18 @@
             "dom",
             "es2017"
         ],
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "strict": true,
+        "target": "esnext",
+        "module": "esnext",
+        "allowJs": true,
+        "noEmit": true,
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "skipLibCheck": true
     },
     "exclude": [
         "node_modules"

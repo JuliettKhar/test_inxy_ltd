@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     node: true,
+    es6: true,
   },
   plugins: [
     'prettier',
@@ -9,7 +10,7 @@ module.exports = {
   parser: 'babel-eslint',
   extends: 'eslint:all',
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 6,
     sourceType: 'module',
   },
   rules: {

@@ -4,12 +4,13 @@
       <h2 class="news__header-title">Latest News</h2>
       <div class="news__header-filter-wrapper">
         <span class="news__header-date">Friday, <span class="mobile-hidden">December</span> 12, 2022</span>
-        <button class="news__header-filter" @click="$emit('sort', asc = !asc)">
-          <img :class="!asc ? 'rotated' : ''" src="/src/assets/img/sort.svg" alt="news filter">
+        <button class="news__header-filter" @click="sortData">
+          <img :class="computeClass" src="/src/assets/img/sort.svg" alt="news filter">
         </button>
       </div>
     </div>
     <div class="news__content-wrapper">
+      <template v-if="newsData.length">
       <div v-for="(item, i) in newsData" :key="i" class="news__content-item">
         <img class="content-item__image" :src="item.image" alt="image">
         <h4 class="content-item__title">{{ item.title }}</h4>
@@ -20,25 +21,33 @@
         <p class="content-item__description">{{ item.description }}</p>
         <a href="#" class="content-item__more">read more</a>
       </div>
+        </template>
+      <template v-else>
+        <p class="news__empty">No news...</p>
+      </template>
     </div>
 
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, inject, ref} from "vue";
+import {computed, defineComponent, inject, ref} from "vue";
 import { DataType } from "../types";
 
 export default defineComponent({
   name: "News",
-  setup() {
+  emits: ['sort'],
+  setup(_, { emit }) {
     const newsData = inject('newsData', ref<DataType[]>([]));
     const asc = ref(true);
+    const sortData = () => emit('sort', asc.value = !asc.value);
+    const computeClass = computed(() => !asc.value ? 'rotated' : '')
 
 
     return {
       newsData,
-      asc,
+      computeClass,
+      sortData
     }
   }
 })
@@ -127,6 +136,11 @@ export default defineComponent({
     @media (min-width: 375px) and (max-width: 576px) {
       max-width: 142px;
     }
+  }
+
+  &__empty {
+    width: 100%;
+    text-align: center;
   }
 }
 

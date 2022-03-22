@@ -1,21 +1,10 @@
 import { ref } from 'vue';
 import { DataType } from '../types';
-import axios from 'axios';
 import { sortData } from '../../utils';
+import { fetchNews, searchNews } from '../api';
 
-export default function useApp() {
+export const useApp = () => {
   const newsData = ref<DataType[]>([]);
-
-  const searchNews = async(value: string) => {
-    if (value) {
-      try {
-        const { data } = await axios.get(`http://localhost:3001/posts?q=${value}`);
-        newsData.value = data;
-      } catch (e) {
-        console.error(e);
-      }
-    }
-  };
 
   const sortDataByDate = (asc: boolean) => {
     newsData.value = sortData(
@@ -24,9 +13,9 @@ export default function useApp() {
     );
   };
 
-  const getData = async() => {
+  const getData = async(): Promise<void> => {
     try {
-      const { data } = await axios.get('http://localhost:3001/posts');
+      const { data } = await fetchNews();
       newsData.value = sortData(
         true,
         data,
@@ -36,19 +25,27 @@ export default function useApp() {
     }
   };
 
-  const clearResults = () => setTimeout(
-    () => {
-      getData();
-    },
-    500,
-  );
+  const clearResults = () => getData();
+
+  const searchNewsData = async(value: string): Promise<void> => {
+    if (value) {
+      try {
+        const { data } = await searchNews(value);
+        newsData.value = data;
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      clearResults();
+    }
+  };
 
 
   return {
     newsData,
-    searchNews,
+    searchNewsData,
     clearResults,
     getData,
     sortDataByDate,
   };
-}
+};

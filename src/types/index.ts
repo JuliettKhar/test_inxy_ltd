@@ -5,3 +5,13 @@ export interface DataType {
     description: string;
     image: string;
 }
+
+enum ResponseStatus {
+  Success = 'success',
+  Error = 'error',
+}
+
+export type ApiResponse<T> = {
+  status: ResponseStatus.Success;
+  data: T;
+};

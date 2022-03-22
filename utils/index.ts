@@ -1,4 +1,15 @@
 import { DataType } from '../src/types';
 
-export const sortData = (asc, data: DataType[]): DataType[] => (asc ? data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()) :
-  data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()));
+const sortDataWithDateByAsc:{[key: string]: (a: number, b: number)=> number} = {
+  true: (a: number, b: number): number => a - b,
+  false: (a: number, b: number): number => b - a,
+};
+
+export const sortData = (asc: boolean, data: DataType[]): DataType[] => {
+  const sortFuncByAsc = sortDataWithDateByAsc[String(asc)];
+
+  return data.sort((a, b) => sortFuncByAsc(
+    new Date(a.date).getTime(),
+    new Date(b.date).getTime(),
+  ));
+};

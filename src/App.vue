@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Header @search="searchNews" @clear="clearResults"/>
+    <Header @search="searchNewsData" />
     <main>
       <news @sort="sortDataByDate"/>
     </main>
@@ -9,11 +9,11 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, provide} from "vue";
+import {defineComponent, onMounted, provide, readonly} from "vue";
 import News from './pages/News.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
-import useApp from "./composables/useApp";
+import {useApp} from "./composables/useApp";
 
 export default defineComponent({
   name: "App",
@@ -25,18 +25,18 @@ export default defineComponent({
   setup() {
     const {
       newsData,
-      searchNews,
+      searchNewsData,
       clearResults,
       getData ,
       sortDataByDate
     } = useApp();
 
-    provide('newsData', newsData);
+    provide('newsData', readonly(newsData));
 
     onMounted(() => getData());
 
     return {
-      searchNews,
+      searchNewsData,
       clearResults,
       sortDataByDate
     }
