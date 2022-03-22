@@ -3,54 +3,58 @@
     <div class="news__header">
       <h2 class="news__header-title">Latest News</h2>
       <div class="news__header-filter-wrapper">
-        <span class="news__header-date">Friday, <span class="mobile-hidden">December</span> 12, 2022</span>
+        <span class="news__header-date"
+          >Friday, <span class="mobile-hidden">December</span> 12, 2022</span
+        >
         <button class="news__header-filter" @click="sortData">
-          <img :class="computeClass" src="/src/assets/img/sort.svg" alt="news filter">
+          <img
+            :class="computeClass"
+            src="/src/assets/img/sort.svg"
+            alt="news filter"
+          />
         </button>
       </div>
     </div>
     <div class="news__content-wrapper">
       <template v-if="newsData.length">
-      <div v-for="(item, i) in newsData" :key="i" class="news__content-item">
-        <img class="content-item__image" :src="item.image" alt="image">
-        <h4 class="content-item__title">{{ item.title }}</h4>
-        <div class="content-item__date">
-          <span>{{ item.date }}</span>
-          <span>{{ item.from }}</span>
+        <div v-for="(item, i) in newsData" :key="i" class="news__content-item">
+          <img class="content-item__image" :src="item.image" alt="image" />
+          <h4 class="content-item__title">{{ item.title }}</h4>
+          <div class="content-item__date">
+            <span>{{ item.date }}</span>
+            <span>{{ item.from }}</span>
+          </div>
+          <p class="content-item__description">{{ item.description }}</p>
+          <a href="#" class="content-item__more">read more</a>
         </div>
-        <p class="content-item__description">{{ item.description }}</p>
-        <a href="#" class="content-item__more">read more</a>
-      </div>
-        </template>
+      </template>
       <template v-else>
         <p class="news__empty">No news...</p>
       </template>
     </div>
-
   </div>
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, inject, ref} from "vue";
-import { DataType } from "../types";
+import { computed, defineComponent, inject, ref } from 'vue';
+import { DataType } from '../types';
 
 export default defineComponent({
-  name: "News",
+  name: 'News',
   emits: ['sort'],
   setup(_, { emit }) {
     const newsData = inject('newsData', ref<DataType[]>([]));
     const asc = ref(true);
-    const sortData = () => emit('sort', asc.value = !asc.value);
-    const computeClass = computed(() => !asc.value ? 'rotated' : '')
-
+    const sortData = () => emit('sort', (asc.value = !asc.value));
+    const computeClass = computed(() => (!asc.value ? 'rotated' : ''));
 
     return {
       newsData,
       computeClass,
-      sortData
-    }
-  }
-})
+      sortData,
+    };
+  },
+});
 </script>
 
 <style scoped lang="scss">
@@ -71,7 +75,7 @@ export default defineComponent({
 
     & > img {
       width: 24px;
-      transition: ease .5s;
+      transition: ease 0.5s;
     }
   }
 
@@ -145,7 +149,6 @@ export default defineComponent({
 }
 
 .content-item {
-
   &__title {
     margin: 16px 0;
     font-family: inherit;
@@ -198,7 +201,7 @@ export default defineComponent({
 
   &__image {
     width: 100%;
-    transition: ease .5s;
+    transition: ease 0.5s;
   }
 
   &__date {
@@ -223,12 +226,11 @@ export default defineComponent({
 .mobile-hidden {
   @media (max-width: 576px) {
     display: none;
-
   }
 }
 
 .rotated {
   transform: rotate(180deg);
-  transition: ease .5s;
+  transition: ease 0.5s;
 }
 </style>

@@ -316,11 +316,7 @@ module.exports = {
     'sort-keys': ['off', 'asc', { caseSensitive: false, natural: true }],
     'sort-vars': 'off',
     'space-before-blocks': 'error',
-    'space-before-function-paren': ['error', {
-      anonymous: 'never',
-      named: 'never',
-      asyncArrow: 'never',
-    }],
+    'space-before-function-paren': 'off',
     'space-in-parens': ['error', 'never'],
     'space-infix-ops': 'error',
     'space-unary-ops': ['error', {
@@ -399,6 +395,8 @@ module.exports = {
     'prefer-named-capture-group': 'off',
     'consistent-return': 'off',
     'number-leading-zero': 'off',
+    'function-call-argument-newline': 'off',
+    'implicit-arrow-linebreak': 'off',
   },
   settings: {
     polyfills: ['promises'],

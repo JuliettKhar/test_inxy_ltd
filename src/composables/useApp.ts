@@ -1,25 +1,19 @@
 import { ref } from 'vue';
 import { DataType } from '../types';
 import { sortData } from '../../utils';
-import { fetchNews, searchNews } from '../api';
+import { fetchNews } from '../api';
 
 export const useApp = () => {
   const newsData = ref<DataType[]>([]);
 
   const sortDataByDate = (asc: boolean) => {
-    newsData.value = sortData(
-      asc,
-      newsData.value,
-    );
+    newsData.value = sortData(asc, newsData.value);
   };
 
-  const getData = async(): Promise<void> => {
+  const getData = async (): Promise<void> => {
     try {
       const { data } = await fetchNews();
-      newsData.value = sortData(
-        true,
-        data,
-      );
+      newsData.value = sortData(true, data);
     } catch (e) {
       console.error(e);
     }
@@ -27,10 +21,10 @@ export const useApp = () => {
 
   const clearResults = () => getData();
 
-  const searchNewsData = async(value: string): Promise<void> => {
+  const searchNewsData = async (value: string): Promise<void> => {
     if (value) {
       try {
-        const { data } = await searchNews(value);
+        const { data } = await fetchNews(value);
         newsData.value = data;
       } catch (e) {
         console.error(e);
@@ -39,7 +33,6 @@ export const useApp = () => {
       clearResults();
     }
   };
-
 
   return {
     newsData,

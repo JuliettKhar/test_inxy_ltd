@@ -7,7 +7,7 @@
     "start": "webpack serve --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
     "lintfix": "eslint --fix --config .eslintrc.js --ignore-path .eslintignore .",
-    "prettier-format": "prettier 'src/**/*.{ts,vue'} --config prettier.config.js --write",
+    "prettier-format": "prettier ./src/**/*.{ts,vue} --config prettier.config.js --write",
     "prepare": "husky install",
     "start:db": "json-server --watch data/db.json --port 3001",
     "start:all": "run-p start start:db"

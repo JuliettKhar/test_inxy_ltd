@@ -1,13 +1,11 @@
 <template>
-  <footer class="footer">
-    Copyright 2022 News Portal
-  </footer>
+  <footer class="footer">Copyright 2022 News Portal</footer>
 </template>
 
 <script>
 export default {
-  name: "Footer"
-}
+  name: 'Footer',
+};
 </script>
 
 <style scoped lang="scss">

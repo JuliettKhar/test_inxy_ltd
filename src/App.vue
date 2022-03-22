@@ -2,33 +2,33 @@
   <div class="app">
     <Header @search="searchNewsData" />
     <main>
-      <news @sort="sortDataByDate"/>
+      <News @sort="sortDataByDate" />
     </main>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, provide, readonly} from "vue";
-import News from './pages/News.vue'
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
-import {useApp} from "./composables/useApp";
+import { defineComponent, onMounted, provide, readonly } from 'vue';
+import News from './pages/News.vue';
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+import { useApp } from './composables/useApp';
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   components: {
     News,
     Header,
-    Footer
+    Footer,
   },
   setup() {
     const {
       newsData,
       searchNewsData,
       clearResults,
-      getData ,
-      sortDataByDate
+      getData,
+      sortDataByDate,
     } = useApp();
 
     provide('newsData', readonly(newsData));
@@ -38,12 +38,12 @@ export default defineComponent({
     return {
       searchNewsData,
       clearResults,
-      sortDataByDate
-    }
-  }
-})
+      sortDataByDate,
+    };
+  },
+});
 </script>
 
 <style lang="scss">
-@import "styles/index";
+@import 'assets/styles/index';
 </style>

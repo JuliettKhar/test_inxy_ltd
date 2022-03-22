@@ -1,6 +1,6 @@
 import { DataType } from '../src/types';
 
-const sortDataWithDateByAsc:{[key: string]: (a: number, b: number)=> number} = {
+const sortDataWithDateByAsc:{ [key: string]: (a: number, b: number)=> number } = {
   true: (a: number, b: number): number => a - b,
   false: (a: number, b: number): number => b - a,
 };

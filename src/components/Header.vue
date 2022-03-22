@@ -3,26 +3,27 @@
     <div class="header__wrapper">
       <div class="header__nav-wrapper">
         <a
-            v-for="(btn, i) in buttons"
-            :key="i"
-            :class="['nav-wrapper__news', isActiveBtn === i ? 'is-active' : '']"
-            href="#"
+          v-for="(btn, i) in buttons"
+          :key="i"
+          :class="['nav-wrapper__news', activeBtn === i ? 'is-active' : '']"
+          href="#"
         >
           {{ btn }}
         </a>
       </div>
-      <div
-          @mouseenter="showSearchInput"
-          class="header__search-wrapper"
-      >
+      <div @mouseenter="showSearchInput" class="header__search-wrapper">
         <input
-            type="text"
-            :class="onSearchHover ? 'is-visible' : ''"
-            v-model="searchValue"
-            @keyup.enter="searchNews"
-        >
+          type="text"
+          :class="isVisible ? 'is-visible' : ''"
+          v-model="searchValue"
+          @keyup.enter="searchNews"
+        />
         <button class="header__search-btn" @click="searchNews">
-          <img class="header__search" src="/src/assets/img/search.svg" alt="search">
+          <img
+            class="header__search"
+            src="/src/assets/img/search.svg"
+            alt="search"
+          />
         </button>
       </div>
     </div>
@@ -30,30 +31,30 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from "vue";
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  name: "Header",
+  name: 'Header',
   emits: ['search'],
-  setup(_, {emit}) {
+  setup(_, { emit }) {
     const buttons = ['News', 'Portal'];
-    const isActiveBtn = ref(0);
-    const onSearchHover = ref(false);
+    const activeBtn = ref(0);
+    const isVisible = ref(false);
     const searchValue = ref('');
 
     const searchNews = () => emit('search', searchValue.value);
-    const showSearchInput = () => onSearchHover.value = true;
+    const showSearchInput = () => (isVisible.value = true);
 
     return {
       buttons,
-      isActiveBtn,
-      onSearchHover,
+      activeBtn,
+      isVisible,
       searchValue,
       searchNews,
-      showSearchInput
-    }
-  }
-})
+      showSearchInput,
+    };
+  },
+});
 </script>
 
 <style scoped lang="scss">
@@ -68,7 +69,7 @@ export default defineComponent({
     max-width: 82%;
     margin: 0 auto;
 
-    @media (min-width:1920px) {
+    @media (min-width: 1920px) {
       max-width: 1440px;
     }
   }
@@ -95,11 +96,10 @@ export default defineComponent({
     align-items: center;
     min-width: 100px;
 
-
     input {
       border-radius: 6px;
       opacity: 0;
-      transition: opacity ease-in-out .5s;
+      transition: opacity ease-in-out 0.5s;
       border: 1px solid $black60;
 
       @media (max-width: 576px) {
@@ -129,6 +129,6 @@ export default defineComponent({
 
 .is-visible {
   opacity: 1 !important;
-  transition: opacity ease-in-out .5s;
+  transition: opacity ease-in-out 0.5s;
 }
 </style>

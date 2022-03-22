@@ -24,7 +24,7 @@ const devConfig = {
           {
             loader: 'sass-resources-loader',
             options: {
-              resources: ['./src/styles/_variables.scss'],
+              resources: ['./src/assets/styles/core/_variables.scss'],
             },
           },
         ],
