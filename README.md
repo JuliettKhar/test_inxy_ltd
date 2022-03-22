@@ -24,5 +24,5 @@ git clone
 npm install
 ```
 ```
-npm start:all
+npm run start:all
 ```
