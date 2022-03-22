@@ -8,7 +8,7 @@
     "build": "webpack --config config/webpack.prod.js",
     "lintfix": "eslint --fix --config .eslintrc.js --ignore-path .eslintignore .",
     "prettier-format": "prettier ./src/**/*.{ts,vue} --config prettier.config.js --write",
-    "prepare": "husky install",
+    "prepare": "husky install && husky add .husky/pre-commit \"npm run lintfix\" ",
     "start:db": "json-server --watch data/db.json --port 3001",
     "start:all": "run-p start start:db"
   },
